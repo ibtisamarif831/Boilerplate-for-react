@@ -1,1 +1,1 @@
-# POS-MERN
+# Boilerplate for react
