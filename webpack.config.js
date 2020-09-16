@@ -1,5 +1,4 @@
 const path=require('path');
-console.log(path.join(__dirname,'public'))
 
 module.exports = {
     entry:'./src/app.js',
@@ -8,16 +7,31 @@ module.exports = {
         filename:'bundle.js'
     },
     module:{
-        rules: [{
+        rules: [
+            {
             loader: 'babel-loader',
-        test: /\.(js|jsx)$/,
+            test: /\.(js|jsx)$/,
             exclude:/nodes_modules/
-        }]
+        },
+        
+        {
+            test: /\.(scss|css)$/,
+            use:[
+                'style-loader',
+                'css-loader',
+                'sass-loader'
+            ]
+
+
+        }
+
+        
+    ]
     },
     devtool:'cheap-module-eval-source-map',
     
     devServer:{
         contentBase: path.join(__dirname, 'public')
-    }
-
+    },
+   
     };
